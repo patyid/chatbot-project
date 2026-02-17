@@ -15,4 +15,5 @@ Antes de começar, certifique-se de ter os seguintes requisitos instalados:
 
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/patyid/app.git](https://github.com/patyid/app.git)
+   git clone https://github.com/patyid/chatbot-project.git
+
