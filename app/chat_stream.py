@@ -67,7 +67,9 @@ def get_session_history(session_id: str) -> SQLChatMessageHistory:
     Returns:
         SQLChatMessageHistory: objeto com histórico persistido.
     """
-    return SQLChatMessageHistory(session_id, connection="sqlite:///chat_history.db")
+    db_path = os.getenv("CHAT_HISTORY_DB", "chat_history.db")
+    connection_string = f"sqlite:///{db_path}"
+    return SQLChatMessageHistory(session_id, connection=connection_string)
 
 
 # ---------------------------
