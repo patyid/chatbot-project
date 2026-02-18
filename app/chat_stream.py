@@ -7,6 +7,7 @@ Chatbot com Streamlit + LangChain + Ollama (ChatOllama)
 """
 
 import streamlit as st
+import os
 
 from dotenv import load_dotenv  # Carrega variáveis de ambiente do arquivo .env (pode trocar por Langfuse/Opik depois)
 from langchain_ollama import ChatOllama
@@ -33,7 +34,11 @@ st.title("Meu primeiro Chatbot")
 
 # Config do Ollama (LLM local)
 base_url = "http://localhost:11434"
-model = "llama3.2"
+# Config do Ollama (LLM local)
+base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+model = os.getenv("OLLAMA_MODEL", "llama3.2")  # ← lê da variável de ambiente
+
+st.caption(f"🤖 Modelo ativo: **{model}**")  # opcional: mostra qual modelo está ativo
 
 # ---------------------------
 # Captura do user_id (servirá como session_id para a memória no SQLite)
