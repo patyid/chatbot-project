@@ -34,7 +34,6 @@ st.title("Meu primeiro Chatbot")
 
 # Config do Ollama (LLM local)
 base_url = "http://localhost:11434"
-# Config do Ollama (LLM local)
 base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 model = os.getenv("OLLAMA_MODEL", "llama3.2")  # ← lê da variável de ambiente
 
