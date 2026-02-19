@@ -43,8 +43,8 @@ st.caption(f"🤖 Modelo ativo: **{model}**")  # opcional: mostra qual modelo es
 # Captura do user_id (servirá como session_id para a memória no SQLite)
 # ---------------------------
 with st.form("user_form"):
-    user_id = st.text_input("Digite seu ID de usuário", key="user_id")
-    submit_button = st.form_submit_button("Enviar")
+    user_id = st.text_input("Digite seu ID de usuário", key="user_id",min_length=3, max_length=10, help="O histórico da conversa será salvo com base nesse ID. Use um ID único para cada usuário.")
+    submit_button = st.form_submit_button("Enviar",color="green",use_container_width=True)
 
 # Validação simples do user_id
 if submit_button:
@@ -81,7 +81,7 @@ if "chat_history" not in st.session_state:
 # Botão para resetar conversa:
 # - limpa o histórico da UI (session_state)
 # - apaga o histórico persistido no SQLite (history.clear())
-if st.button("Iniciar nova conversa"):
+if st.button("Iniciar nova conversa",color="green",use_container_width=True):
     st.session_state.chat_history = []
     if user_id:  # evita quebrar se clicar antes de informar user_id
         history = get_session_history(user_id)
